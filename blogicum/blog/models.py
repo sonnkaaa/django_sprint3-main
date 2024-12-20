@@ -114,8 +114,10 @@ class Post(BaseModel):
     def get_published_posts(cls):
         return cls.objects.filter(
             is_published=True,
-            pub_date__lte=now()
+            pub_date__lte=now(),
+            category__is_published=True
         )
+
 
     class Meta:
         verbose_name = "публикация"
